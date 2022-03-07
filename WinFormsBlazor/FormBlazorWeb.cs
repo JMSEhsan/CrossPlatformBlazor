@@ -8,13 +8,13 @@ namespace WinFormsBlazor
 {
     public partial class FormBlazorWeb : Form
     {
-        public static AppState AppState = new AppState();
+        public static AppState appState = new AppState();
         public FormBlazorWeb()
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddSingleton<WeatherForecastService>();
-            serviceCollection.AddSingleton<AppState>();
+            serviceCollection.AddSingleton<AppState>(appState);
 
             InitializeComponent();
 
@@ -25,7 +25,7 @@ namespace WinFormsBlazor
 
         private void FormBlazorCountBTM_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Counter Value: " + AppState.Counter);
+            MessageBox.Show("Counter Value: " + appState.Counter);
         }
     }
 }
